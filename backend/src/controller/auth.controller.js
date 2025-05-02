@@ -1,7 +1,8 @@
 import { User } from "../models/user.model.js";
 
 export const authCallback = async (req, res, next) => {
-	try {
+	
+try {
 		const { id, firstName, lastName, imageUrl } = req.body;
 
 		// check if user already exists
