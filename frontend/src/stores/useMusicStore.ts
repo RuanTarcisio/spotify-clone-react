@@ -25,7 +25,7 @@ interface MusicStore {
 	deleteAlbum: (id: string) => Promise<void>;
 }
 
-export const useMusicStore = create<MusicStore>((set) => ({
+export const useMusicStore = create<MusicStore>((set, get) => ({
 	albums: [],
 	songs: [],
 	isLoading: false,
@@ -55,6 +55,7 @@ export const useMusicStore = create<MusicStore>((set) => ({
 			toast.error("Error deleting song");
 		} finally {
 			set({ isLoading: false });
+			await get().fetchSongs();
 		}
 	},
 
